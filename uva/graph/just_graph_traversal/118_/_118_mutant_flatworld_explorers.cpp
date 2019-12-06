@@ -13,12 +13,10 @@ int main(){
     while(cin >> x >> y >> ori >> dirs){
         i = ori == "N" ? 0 : (ori == "E" ? 1 : (ori == "S" ? 2 : 3));
         for(char c : dirs){
-            if(c == 'R'){
+            if(c == 'R')
                 i = (i + 1) % 4;
-            }
-            else if(c == 'L'){
+            else if(c == 'L')
                 i = (i - 1 + 4) % 4;
-            }
             else{
                 int x_inc = x + di[i], y_inc = y + dj[i];
                 if((x_inc < 0 || x_inc > tr_x || y_inc < 0 || y_inc > tr_y)){
@@ -38,9 +36,8 @@ int main(){
             cout << x << " " << y << " " << dir[i] << " " << "LOST" << "\n";
             off_flag = 0;
         }
-        else{
+        else
             cout << x << " " << y << " " << dir[i] << "\n";
-        }
     }
     return 0;
 }
