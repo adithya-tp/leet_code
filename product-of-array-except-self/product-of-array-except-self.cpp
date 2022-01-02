@@ -3,18 +3,30 @@ public:
     vector<int> productExceptSelf(vector<int>& nums) {
         int len = nums.size();
         
-        vector<int> pref(len), suf(len);
-        pref[0] = 1;
-        suf[len - 1] = 1;
-        for(int i = 1; i < len; i++) {
-            pref[i] = pref[i - 1] * nums[i - 1];
-            suf[len - i - 1] = suf[len - i] * nums[len - i];
+        int prod = 1, zero_count = 0;
+        for(auto i : nums) {
+            if(i == 0) {
+                zero_count++;
+                continue;
+            }
+            prod *= i;
         }
         
-        vector<int> ans(len);
         for(int i = 0; i < len; i++) {
-            ans[i] = pref[i] * suf[i];
+            if(nums[i] == 0) {
+                if(zero_count == 1) {
+                    nums[i] = prod;
+                } else {
+                    nums[i] = 0;
+                }
+            } else {
+                if(zero_count) {
+                    nums[i] = 0;
+                } else {
+                    nums[i] = prod / nums[i];
+                }
+            }
         }
-        return ans;
+        return nums;
     }
 };
