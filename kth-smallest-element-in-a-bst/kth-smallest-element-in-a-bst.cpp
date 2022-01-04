@@ -11,11 +11,6 @@
  */
 class Solution {
 public:
-    int traverse(TreeNode* root) {
-        if(root == nullptr) return 0;
-        return 1 + traverse(root->left) + traverse(root->right);
-    }
-    
     int kth_value, curr_node = 0;
     void kth(TreeNode* root, int k) {
         if(root == nullptr) {
@@ -32,7 +27,6 @@ public:
     }
     
     int kthSmallest(TreeNode* root, int k) {
-        int num_nodes = traverse(root);
         kth(root, k);
         return kth_value;
     }
