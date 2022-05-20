@@ -6,11 +6,11 @@ class Solution:
             # 32 -> number of characters to fill
             # b -> format result as binary
             # Source: https://blog.finxter.com/python-bin-function/
-            bit_string = format(candidate, "032b")
+            bit_string = format(candidate, "024b")
             bit_strings.append(bit_string)
         
         max_count = 0
-        for i in range(32):
+        for i in range(24):
             curr_count = 0
             for bit_string in bit_strings:
                 if bit_string[i] == '1':
