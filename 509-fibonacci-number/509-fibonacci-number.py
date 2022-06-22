@@ -1,4 +1,5 @@
 class Solution:
+    @lru_cache(None)
     def fib(self, n: int) -> int:
         if n in (0, 1):
             return n
