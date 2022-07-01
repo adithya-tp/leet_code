@@ -20,10 +20,4 @@ class Solution:
                 # Flood fill from the boundary land cells to 0
                 if (grid[i][j] == 1) and ((i == 0) or (j == 0) or (i == rows - 1) or (j == cols - 1)):
                     self.dfs(grid, i, j)
-        
-        for i in range(rows):
-            for j in range(cols):
-                # Add up the number of remaining island sizes
-                if grid[i][j]:
-                    ans += self.dfs(grid, i, j)
-        return ans
+        return sum(sum(grid, []))
