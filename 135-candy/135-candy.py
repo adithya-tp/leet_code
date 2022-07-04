@@ -9,5 +9,5 @@ class Solution:
         for idx in range(n - 1, 0, -1):
             if (ratings[idx - 1] > ratings[idx]) and (ans_list[idx - 1] <= ans_list[idx]):
                 ans_list[idx - 1] = ans_list[idx] + 1
-                
+        
         return sum(ans_list)
