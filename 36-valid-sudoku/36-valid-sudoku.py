@@ -11,11 +11,7 @@ class Solution:
         return True
                 
     def _transpose(self, b):
-        b_t = [[0 for _ in range(9)] for _ in range(9)]
-        for r in range(9):
-            for c in range(9):
-                b_t[r][c] = b[c][r]
-        return b_t
+        return list(map(list, zip(*b)))
     
     def _block_check(self, b):
         for sr in range(0, 9, 3):
