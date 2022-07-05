@@ -4,16 +4,17 @@ class Solution:
         if n == 0:
             return 0
         
-        nums.sort()
-        curr_val, curr_len = (nums[0], 1)
-        max_len = 1
-        for idx in range(1, n):
-            if nums[idx] == nums[idx - 1] + 1:
-                curr_len += 1
-            elif nums[idx] == nums[idx - 1]:
-                continue
-            else:
+        nums_lookup = set(nums)
+        max_len = 0
+        for val in nums:
+            # The val - 1 check is necessary because you don't need
+            # to count starting from val in that case, because you've
+            # already counted (or will count in the future) starting from val.
+            # Very cool!
+            if val - 1 not in nums_lookup:
+                curr_num, curr_len = (val, 1)
+                while curr_num + 1 in nums_lookup:
+                    curr_num += 1
+                    curr_len += 1
                 max_len = max(max_len, curr_len)
-                curr_val, curr_len = (nums[idx], 1)
-        
         return max(max_len, curr_len)
