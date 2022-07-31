@@ -20,12 +20,9 @@ class Solution:
         min_dis = 1e15
         min_dis_node_idx = -1
         for node_idx in range(num_nodes):
-            if (d1[node_idx] != -1) and (d2[node_idx] != -1):
+            if -1 not in (d1[node_idx], d2[node_idx]):
                 max_dis = max(d1[node_idx], d2[node_idx])
                 if max_dis < min_dis:
                     min_dis = max_dis
                     min_dis_node_idx = node_idx
-                elif max_dis == min_dis:
-                    if node_idx < min_dis_node_idx:
-                        min_dis_node_idx = node_idx
         return min_dis_node_idx
