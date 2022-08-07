@@ -3,7 +3,6 @@ class Solution:
         self.n = None
         self.ans = 0
         self.mod = int(1e9 + 7)
-        self.curr_string = []
         self.map = {
             ' ': ['a','e','i','o','u'],
             'a': ['e'],
@@ -24,9 +23,7 @@ class Solution:
         ans = 0
         next_list = self.map[last_char]
         for next_char in next_list:
-            self.curr_string.append(next_char)
             ans += self.brute_force(idx + 1, next_char)
-            self.curr_string.pop()
         self.dp[last_char][idx] = ans
         return ans
     
